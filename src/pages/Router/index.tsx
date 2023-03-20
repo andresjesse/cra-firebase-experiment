@@ -1,10 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./Home/index.page";
-import LoginPage from "./Login/index.page";
+import AdminPage from "../Admin/index.page";
+import HomePage from "../Home/index.page";
+import LoginPage from "../Login/index.page";
+import ProtectedRoute from "./_ProtectedRoute";
 
 export enum Routes {
   HOME = "/",
   LOGIN = "/login",
+  ADMIN = "/admin",
 }
 
 const router = createBrowserRouter([
@@ -15,6 +18,14 @@ const router = createBrowserRouter([
   {
     path: Routes.LOGIN,
     element: <LoginPage />,
+  },
+  {
+    path: Routes.ADMIN,
+    element: (
+      <ProtectedRoute>
+        <AdminPage />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
