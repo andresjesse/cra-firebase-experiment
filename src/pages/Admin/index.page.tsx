@@ -7,6 +7,7 @@ export default function AdminPage() {
   return (
     <div>
       <h1>AdminPage</h1>
+      TODO: Keep working in admin/books/create
       <button onClick={() => signOut(auth)}>Logout</button>
     </div>
   );
