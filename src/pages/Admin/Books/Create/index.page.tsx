@@ -1,4 +1,4 @@
-export default function CreateBookPage() {
+export default function AdminBooksCreatePage() {
   const handleCreate = () => {
     console.log("TODO!!");
   };
