@@ -1,17 +1,18 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate, useNavigate } from "react-router-dom";
-import firebaseApp from "../../config/firebaseConfig";
+import useAuth from "../../hooks/useAuth";
 import { RouterPaths } from "../Router";
 
-const auth = getAuth(firebaseApp);
-
 export default function LoginPage() {
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    console.log("Login");
-    await signInWithEmailAndPassword(auth, "user@email.com", "123456");
-    navigate(RouterPaths.ADMIN.INDEX);
+    try {
+      await login("user@email.com", "123456");
+      navigate(RouterPaths.ADMIN.INDEX);
+    } catch (e) {
+      console.log("Deal error!", e);
+    }
   };
 
   return (

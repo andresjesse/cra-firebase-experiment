@@ -1,7 +1,7 @@
-import { initializeApp } from "firebase/app";
+import { FirebaseOptions } from "firebase/app";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey: "",
   authDomain: "",
   projectId: "",
@@ -10,6 +10,4 @@ const firebaseConfig = {
   appId: "",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
-
-export default firebaseApp;
+export default firebaseConfig;

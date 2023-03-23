@@ -1,12 +1,8 @@
-import { getAuth } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, Outlet } from "react-router-dom";
-import firebaseApp from "../../../config/firebaseConfig";
-
-const auth = getAuth(firebaseApp);
+import useAuth from "../../../hooks/useAuth";
 
 export default function ProtectedOutlet() {
-  const [user, loading] = useAuthState(auth);
+  const { user, loading } = useAuth();
 
   if (loading) return <div>Loading...</div>;
 
