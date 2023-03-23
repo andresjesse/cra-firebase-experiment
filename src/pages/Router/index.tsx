@@ -14,9 +14,9 @@ import ProtectedOutlet from "./_ProtectedOutlet";
 
 export const RouterPaths = {
   INDEX: "/",
-  LOGIN: "login",
+  LOGIN: "/login",
   ADMIN: {
-    INDEX: "admin",
+    INDEX: "/admin",
     BOOKS: {
       INDEX: "books",
       CREATE: "create",
