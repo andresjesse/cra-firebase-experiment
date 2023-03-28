@@ -19,6 +19,11 @@ export default function LoginPage() {
     <div>
       <h1>LoginPage</h1>
 
+      <div>
+        This example has a fixed user <b>"user@email.com"</b> with password{" "}
+        <b>"123456"</b>. Make sure to create it in your firebase application.
+      </div>
+
       <button onClick={handleLogin}>Login</button>
     </div>
   );

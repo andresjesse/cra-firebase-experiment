@@ -1,6 +1,7 @@
 import useDocument from "@/hooks/useDocument";
+import { RouterPaths } from "@/pages/Router";
 import Book from "@/types/Book";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function AdminBooksShowPage() {
   const { id } = useParams();
@@ -24,6 +25,9 @@ export default function AdminBooksShowPage() {
       <div>id: {data?.id}</div>
       <div>title: {data?.title}</div>
       <div>pages: {data?.pages}</div>
+      <div>
+        <Link to={RouterPaths.ADMIN.BOOKS.SHOW.CHAPTERS.INDEX}>Chapters</Link>
+      </div>
 
       <button onClick={randomUpdate}>Random update (realtime updates)</button>
 

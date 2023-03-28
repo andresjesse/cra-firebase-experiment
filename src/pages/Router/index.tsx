@@ -11,6 +11,9 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import AdminBooksChaptersPage from "../Admin/Books/[id]/Chapters/index.page";
+import AdminBooksChaptersShowPage from "../Admin/Books/[id]/Chapters/[chid]/index.page";
+
 import ProtectedOutlet from "./_ProtectedOutlet";
 
 export const RouterPaths = {
@@ -21,7 +24,13 @@ export const RouterPaths = {
     BOOKS: {
       INDEX: "books",
       CREATE: "create",
-      SHOW: ":id",
+      SHOW: {
+        INDEX: ":id",
+        CHAPTERS: {
+          INDEX: "chapters",
+          SHOW: ":chid",
+        },
+      },
     },
   },
 };
@@ -39,10 +48,20 @@ const router = createBrowserRouter(
             path={RouterPaths.ADMIN.BOOKS.CREATE}
             element={<AdminBooksCreatePage />}
           />
-          <Route
-            path={RouterPaths.ADMIN.BOOKS.SHOW}
-            element={<AdminBooksShowPage />}
-          />
+          <Route path={RouterPaths.ADMIN.BOOKS.SHOW.INDEX} element={<Outlet />}>
+            <Route index element={<AdminBooksShowPage />} />
+
+            <Route
+              path={RouterPaths.ADMIN.BOOKS.SHOW.CHAPTERS.INDEX}
+              element={<Outlet />}
+            >
+              <Route index element={<AdminBooksChaptersPage />} />
+              <Route
+                path={RouterPaths.ADMIN.BOOKS.SHOW.CHAPTERS.SHOW}
+                element={<AdminBooksChaptersShowPage />}
+              />
+            </Route>
+          </Route>
         </Route>
       </Route>
     </Route>
