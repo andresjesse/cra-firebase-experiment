@@ -6,13 +6,13 @@ import Book from "../../../../types/Book";
 export default function AdminBooksShowPage() {
   const { id } = useParams();
 
-  const { data, loading, update, refresh } = useDocument<Book>("books", id!);
+  const { data, loading, upsert, refresh } = useDocument<Book>("books", id!);
 
   if (loading) return <div>Loading...</div>;
 
   const randomUpdate = () => {
     if (data) {
-      update({
+      upsert({
         ...data,
         title: "Random title: " + Math.random(),
       });

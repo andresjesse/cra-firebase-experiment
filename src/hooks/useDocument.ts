@@ -30,11 +30,11 @@ export default function useDocument<T extends { [x: string]: any }>(
   const docRef = doc(db, collectionName, id);
 
   /**
-   * Create or update a new document in the collection.
+   * Create or update a document in the given collection.
    * @param newVal A new record of collection type. Entire content will be overwritten!
    * @returns Id of the created document.
    */
-  const update = async (newVal: T) => {
+  const upsert = async (newVal: T) => {
     await setDoc(docRef, newVal);
     return docRef.id;
   };
@@ -67,5 +67,5 @@ export default function useDocument<T extends { [x: string]: any }>(
     // eslint-disable-next-line
   }, []);
 
-  return { data, loading, update, refresh };
+  return { data, loading, upsert, refresh };
 }
