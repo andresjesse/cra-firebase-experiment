@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import AdminBooksCreatePage from "../Admin/Books/Create/index.page";
 import AdminBooksPage from "../Admin/Books/index.page";
+import AdminBooksShowPage from "../Admin/Books/[id]/index.page";
 import AdminPage from "../Admin/index.page";
 import HomePage from "../Home/index.page";
 import LoginPage from "../Login/index.page";
@@ -20,6 +21,7 @@ export const RouterPaths = {
     BOOKS: {
       INDEX: "books",
       CREATE: "create",
+      SHOW: ":id",
     },
   },
 };
@@ -36,6 +38,10 @@ const router = createBrowserRouter(
           <Route
             path={RouterPaths.ADMIN.BOOKS.CREATE}
             element={<AdminBooksCreatePage />}
+          />
+          <Route
+            path={RouterPaths.ADMIN.BOOKS.SHOW}
+            element={<AdminBooksShowPage />}
           />
         </Route>
       </Route>

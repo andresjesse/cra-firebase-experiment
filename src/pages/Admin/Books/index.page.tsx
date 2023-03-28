@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import useCollection, { Book } from "../../../hooks/useCollection";
+import useCollection from "../../../hooks/useCollection";
+import Book from "../../../types/Book";
 import { RouterPaths } from "../../Router";
 
 export default function AdminBooksPage() {
@@ -37,6 +38,8 @@ export default function AdminBooksPage() {
           >
             Update
           </button>
+
+          <Link to={book.id!}>Show</Link>
         </div>
       ))}
 
