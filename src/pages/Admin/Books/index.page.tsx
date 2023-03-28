@@ -1,7 +1,7 @@
+import useCollection from "@/hooks/useCollection";
+import { RouterPaths } from "@/pages/Router";
+import Book from "@/types/Book";
 import { Link } from "react-router-dom";
-import useCollection from "../../../hooks/useCollection";
-import Book from "../../../types/Book";
-import { RouterPaths } from "../../Router";
 
 export default function AdminBooksPage() {
   const { data, loading, remove, update, refreshData } = useCollection<Book>(

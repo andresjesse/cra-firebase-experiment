@@ -1,6 +1,6 @@
+import useAuth from "@/hooks/useAuth";
+import { RouterPaths } from "@/pages/Router";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { RouterPaths } from "../Router";
 
 export default function LoginPage() {
   const { login } = useAuth();

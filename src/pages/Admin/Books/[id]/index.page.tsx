@@ -1,7 +1,6 @@
-import React from "react";
+import useDocument from "@/hooks/useDocument";
+import Book from "@/types/Book";
 import { useParams } from "react-router-dom";
-import useDocument from "../../../../hooks/useDocument";
-import Book from "../../../../types/Book";
 
 export default function AdminBooksShowPage() {
   const { id } = useParams();

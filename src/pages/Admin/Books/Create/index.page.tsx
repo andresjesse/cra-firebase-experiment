@@ -1,6 +1,6 @@
+import useCollection from "@/hooks/useCollection";
+import Book from "@/types/Book";
 import { useNavigate } from "react-router-dom";
-import useCollection from "../../../../hooks/useCollection";
-import Book from "../../../../types/Book";
 
 export default function AdminBooksCreatePage() {
   const navigate = useNavigate();

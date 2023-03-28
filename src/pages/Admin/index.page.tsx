@@ -1,6 +1,6 @@
+import useAuth from "@/hooks/useAuth";
+import { RouterPaths } from "@/pages/Router";
 import { Link } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { RouterPaths } from "../Router";
 
 export default function AdminPage() {
   const { logout } = useAuth();

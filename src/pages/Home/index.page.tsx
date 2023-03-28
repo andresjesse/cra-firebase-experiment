@@ -1,5 +1,5 @@
+import { RouterPaths } from "@/pages/Router";
 import { Link } from "react-router-dom";
-import { RouterPaths } from "../Router";
 
 export default function HomePage() {
   return (

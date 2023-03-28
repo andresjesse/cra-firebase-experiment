@@ -1,3 +1,9 @@
+import AdminBooksCreatePage from "@/pages/Admin/Books/Create/index.page";
+import AdminBooksPage from "@/pages/Admin/Books/index.page";
+import AdminBooksShowPage from "@/pages/Admin/Books/[id]/index.page";
+import AdminPage from "@/pages/Admin/index.page";
+import HomePage from "@/pages/Home/index.page";
+import LoginPage from "@/pages/Login/index.page";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -5,12 +11,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import AdminBooksCreatePage from "../Admin/Books/Create/index.page";
-import AdminBooksPage from "../Admin/Books/index.page";
-import AdminBooksShowPage from "../Admin/Books/[id]/index.page";
-import AdminPage from "../Admin/index.page";
-import HomePage from "../Home/index.page";
-import LoginPage from "../Login/index.page";
 import ProtectedOutlet from "./_ProtectedOutlet";
 
 export const RouterPaths = {
