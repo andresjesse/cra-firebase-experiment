@@ -10,9 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Write firebaseConfig
-        run: |
-          printf '${{secrets.FIREBASE_CONFIG}}' >> src/config/firebaseConfig.ts
-          cat src/config/firebaseConfig.ts
+        uses: JakubMosakowski/secret-into-file-action@v1.0.0
+        with:
+          secret: ${{ secrets.FIREBASE_CONFIG }}
+          # passphrase: ${{ secrets.PASSPHRASE }}
+          filename: "src/config/firebaseConfig.ts"
+      # - name: Write firebaseConfig
+      #   run: |
+      #     printf '${{secrets.FIREBASE_CONFIG}}' >> src/config/firebaseConfig.ts
+      #     cat src/config/firebaseConfig.ts
       - run: yarn install --frozen-lockfile && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
