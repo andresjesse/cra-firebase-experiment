@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Write firebaseConfig
-        run: echo ${{ secrets.FIREBASE_CONFIG }} | base64 -d >> src/config/firebaseConfig.ts
+        run: cp src/config/firebaseConfig.example.ts src/config/firebaseConfig.ts
       # - name: Write firebaseConfig
       #   run: |
       #     printf '${{secrets.FIREBASE_CONFIG}}' >> src/config/firebaseConfig.ts
