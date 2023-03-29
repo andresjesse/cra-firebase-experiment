@@ -10,7 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Write firebaseConfig
-        run: echo $FIREBASE_CONFIG >> src/config/firebaseConfig.ts
+        run: |
+          echo $FIREBASE_CONFIG >> src/config/firebaseConfig.ts
+          cat src/config/firebaseConfig.ts
       - run: yarn install --frozen-lockfile && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
