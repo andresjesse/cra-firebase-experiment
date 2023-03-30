@@ -16,9 +16,8 @@ jobs:
           MY_VAL: ${{ secrets.FIREBASE_CONFIG }}
         run: |
           import os
-          data = open("file", "w")
+          data = open("src/config/firebaseConfig.ts", "w")
           for q in (os.getenv("MY_VAL")):
-            print(q)
             data.write(q)
         shell: python
       # - name: Write firebaseConfig
