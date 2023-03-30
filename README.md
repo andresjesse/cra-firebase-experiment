@@ -1,9 +1,5 @@
 # Getting Started with Create React App
 
-Repo >> settings, actions, general, scroll down to Workflow permissions >> enable Read and Write permissions
-
-TODO: solve firebaseConfig
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -48,3 +44,57 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Deploy Config
+
+**Github permissions for Workflow**:
+
+- From your repository: settings, actions, general, scroll down to Workflow permissions >> enable Read and Write permissions
+
+**Install Firebase CLI**
+
+Firebase CLI can be installed globally or used as a standalone binary (your choice). Follow official guide: https://firebase.google.com/docs/cli
+
+**Setup Deploy for Firebase Hosting**
+
+Follow official guide, but pay attention to CLI questions. Point public folder to `build` and avoid overriding index.html!
+
+https://firebase.google.com/docs/hosting/github-integration
+
+**Setup Github Action**
+
+Create `.github/workflows/cd-firebase.yml` with this content (the CLI will create live and preview configs, you can edit them also).
+
+Copy your `firebaseConfig.ts` contents and add it as Secret in Repository Settings >> Secrets and variables >> Actions >> Tab Secrets. Name it `FIREBASE_CONFIG`.
+
+This is an example of workflow to deploy for production using `firebaseConfig.ts` from Github Secrets. Pay attention to use your own `projectId` (according to previosly configured via CLI):
+
+```
+name: Deploy to Firebase Hosting
+  #"on": pull_request #use this for bebug
+  'on':
+    push:
+      branches:
+        - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Write firebaseConfig
+        env:
+          MY_VAL: ${{ secrets.FIREBASE_CONFIG }}
+        run: |
+          import os
+          data = open("src/config/firebaseConfig.ts", "w")
+          for q in (os.getenv("MY_VAL")):
+            data.write(q)
+        shell: python
+      - run: yarn install --frozen-lockfile && yarn build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXT_FIREBASE_DEMO_1DCC4 }}"
+          channelId: live
+          projectId: next-firebase-demo-1dcc4
+```
