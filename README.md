@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-TODO: useDocument and documentate nested collection (books/id/chapters)
+Repo >> settings, actions, general, scroll down to Workflow permissions >> enable Read and Write permissions
+
+TODO: solve firebaseConfig
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
