@@ -71,11 +71,11 @@ This is an example of workflow to deploy for production using `firebaseConfig.ts
 
 ```
 name: Deploy to Firebase Hosting
-  #"on": pull_request #use this for bebug
-  'on':
-    push:
-      branches:
-        - main
+#"on": pull_request #use this for bebug
+'on':
+push:
+    branches:
+    - main
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
