@@ -98,3 +98,13 @@ jobs:
           channelId: live
           projectId: next-firebase-demo-1dcc4
 ```
+
+**Testing**:
+
+Open 3 terminals:
+
+`NODE_ENV=test yarn start`
+
+`firebase emulators:start --project YOUR_PROJECT_ID`
+
+`yarn cypress`

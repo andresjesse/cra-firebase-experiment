@@ -23,7 +23,8 @@
     "start": "BROWSER=none craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "cypress": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^12.9.0"
   }
 }
