@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
+import { connectAuthEmulator, getAuth } from "@firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "@firebase/firestore";
 
 /**
  * Firebase initialization. This hook should be called in App's entry point.
@@ -12,6 +14,14 @@ export default function useFirebase(firebaseConfig: FirebaseOptions) {
 
   useEffect(() => {
     const app = initializeApp(firebaseConfig);
+
+    if (process.env.NODE_ENV === "test") {
+      console.log("Connecting to emulators...");
+
+      connectAuthEmulator(getAuth(), "http://localhost:9099");
+      connectFirestoreEmulator(getFirestore(), "localhost", 8080);
+    }
+
     setApp(app);
   }, [firebaseConfig]);
 

@@ -98,3 +98,29 @@ jobs:
           channelId: live
           projectId: next-firebase-demo-1dcc4
 ```
+
+**Setup Tests with Playwright and Firebase Emulators**
+
+To run tests locally:
+
+- terminal 1: `NODE_ENV=test yarn start`
+- terminal 2: `firebase emulators:start --import ./.firebase-mock`
+- terminal 3: `npx playwright test`
+
+Configs made for this repository are listed bellow:
+
+Initialize firebase emulators (for new repositories only):
+
+`firebase init emulators`
+
+Select all services to be emulated and opt for the default settings. In this project were configured: auth and firestore emulators.
+
+Use of emulators was configured for `test` environment in `src/hoos/useFirebase.ts`. To run the application locally using emulators:
+
+`NODE_ENV=test yarn start`
+
+To generate mock data run the emulators, open web UI, add your data, then with another terminal export it: `firebase emulators:export ./.firebase-mock`. You can run emulators with mock data by importing it: `firebase emulators:start --import ./.firebase-mock`
+
+To generate tests using Playwright:
+
+`npx playwright codegen localhost:3000`
